@@ -1,4 +1,4 @@
-# therAPI Design System (Stitch-ready, v0)
+# THERAPI Design System (Stitch-ready, v0)
 
 Ziel: **Google Stitch** trotz eingeschränkter Befehlsgenauigkeit zuverlässig nutzen.
 
@@ -8,38 +8,40 @@ Dieses Dokument ist absichtlich in **kleinen, robusten Prompt-Bausteinen** aufge
 
 ## 1) Produktkontext (für jeden Stitch-Startprompt)
 
-> Baue ein Desktop-first Web-Interface für ein lokales API-Discovery-Tool namens **therAPI**. Fokus: HTTP-Capture, Endpoint-Übersicht, Schema-Versionen, Drift-Diff, OpenAPI-Export. Kein Marketing-Look, sondern Tooling-UI mit hoher Informationsdichte.
+> Baue ein Desktop-first Web-Interface für ein lokales API-Discovery-Tool namens **THERAPI**. Fokus: HTTP-Capture, Endpoint-Übersicht, Schema-Versionen, Drift-Diff, OpenAPI-Export. Kein Marketing-Look, sondern Tooling-UI mit hoher Informationsdichte.
 
 ---
 
 ## 2) Design-Tokens (fix, guideline-konform)
 
-- **Theme-Modus:** technical-neutral (**light default**), dark optional für technische Deep-Work-Ansichten
+- **Theme-Prinzip:** kein Techy-Startup-Look. Ruhig, klar, produktiv.
+- **Mode-Prinzip:** Light ist Default. Dark ist **exakt derselbe Modus**, nur anders beleuchtet (keine semantische Verschiebung).
 - **Border radius:** 10px
 - **Grid/Spacing:** 8pt-Grid mit 4/8/16/24/32
 - **Font:** Inter (Semibold headings, Regular body)
-- **Core Palette (light default, guideline-abgeleitet):**
-  - primary `#1F6FEB`
-  - secondary `#5B7C99`
-  - accent `#14B8A6`
+- **Semantische Rollen (in Light und Dark identisch):**
+  - primary (Action/Fokus) `#1F6FEB`
+  - secondary (stützende Signale) `#5B7C99`
+  - accent (sparsame Hervorhebung) `#14B8A6`
+  - success `#22C55E`
+  - warning `#F59E0B`
+  - danger `#EF4444`
+  - info `#38BDF8`
+- **Light-Token (Default):**
   - background `#F8FAFC`
   - surface `#FFFFFF`
   - elevated-surface `#F1F5F9`
   - border `#CBD5E1`
   - text-primary `#0F172A`
   - text-secondary `#475569`
-- **Dark-Variante (optional):**
+- **Dark-Token (nur Beleuchtung):**
   - background `#0F172A`
   - surface `#111827`
   - elevated-surface `#1F2937`
   - border `#334155`
   - text-primary `#E5E7EB`
   - text-secondary `#94A3B8`
-- **Semantic Colors (aus Guideline):**
-  - success `#22C55E`
-  - warning `#F59E0B`
-  - danger `#EF4444`
-  - info `#38BDF8`
+  - Mapping-Regel: Rolle/Hierarchie/Komponentenlogik bleibt 1:1 identisch zu Light.
 - **Kontrastregeln:** mindestens WCAG AA; Status nicht nur über Farbe kommunizieren
 
 ---
@@ -239,7 +241,7 @@ Wenn Stitch Prompts ungenau umsetzt:
 
 ## 10) Übernahme aus `lootziffer666/design_system`
 
-Ja — damit kann man **sehr gut arbeiten**. Für therAPI sind diese Leitlinien direkt nutzbar:
+Ja — damit kann man **sehr gut arbeiten**. Für THERAPI sind diese Leitlinien direkt nutzbar:
 
 - **Start with feeling, not features** → zuerst Zielwirkung (ruhig, klar, kompetent), dann Komponenten.
 - **Stabile Shell** → Navigation, Topbar und Container nicht pro Screen variieren.
@@ -289,4 +291,4 @@ Nach jeder Stitch-Iteration einmal ausführen:
 > 5) Kind, actionable microcopy
 > If any check fails, propose only minimal edits and do not redesign the full screen.
 
-Damit werden die Guidelines aus `lootziffer666/design_system` operationalisiert, ohne den bisherigen therAPI-Aufbau zu brechen.
+Damit werden die Guidelines aus `lootziffer666/design_system` operationalisiert, ohne den bisherigen THERAPI-Aufbau zu brechen.
