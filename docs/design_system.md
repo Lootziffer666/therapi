@@ -292,3 +292,81 @@ Nach jeder Stitch-Iteration einmal ausführen:
 > If any check fails, propose only minimal edits and do not redesign the full screen.
 
 Damit werden die Guidelines aus `lootziffer666/design_system` operationalisiert, ohne den bisherigen THERAPI-Aufbau zu brechen.
+
+---
+
+## 13) Stitch-Rettungsplan (nur 2 stabile Layouts als Basis)
+
+Wenn Stitch nur zwei konsistente Frames liefert, behandeln wir sie als **Master-Templates** und bauen alles andere durch minimale Varianten:
+
+- Template A: `control_panel_updated_branding`
+- Template B: `endpoint_explorer_corrected`
+
+**Regel:** Kein Redesign mehr. Nur Inhalte austauschen, Bereiche ein-/ausblenden, Spaltenbreiten anpassen.
+
+### 13.1 Master-Template A (`control_panel_updated_branding`)
+Nutzen für:
+- Control Panel
+- OpenAPI Export
+- Collections Export
+- Settings
+
+Mapping:
+- Linke Card-Spalte bleibt „Kontext/Status“
+- Rechte Hauptfläche wird je nach Seite ersetzt:
+  - OpenAPI Export: Preview + Export Actions + History
+  - Collections Export: Liste + Detail + Download Actions
+  - Settings: 4 Sektionen als gestapelte Cards
+
+### 13.2 Master-Template B (`endpoint_explorer_corrected`)
+Nutzen für:
+- Endpoint Explorer
+- Schema Drift
+- Capture Inspector
+
+Mapping:
+- Linke Spalte = Filter/Navigation
+- Mitte = Liste oder Timeline
+- Rechts = Detail/Inspector
+
+Spezifisch:
+- Schema Drift: Mitte = Version Timeline, rechts = Added/Removed Diff
+- Capture Inspector: Mitte = Request-Liste, rechts = Request/Response Split
+
+---
+
+## 14) Zero-Redesign Prompt-Set (für frustfreie Iteration)
+
+### 14.1 Globale Sicherheitsformel (immer voranstellen)
+
+> Keep existing layout and spacing. Do not redesign shell, typography, colors, or navigation. Only replace content blocks listed below.
+
+### 14.2 From Template A → OpenAPI Export
+
+> Use `control_panel_updated_branding` as base. Keep all layout geometry. Rename right main panel to `OpenAPI Export`. Add components in this order: `OpenAPI Preview`, `Export Actions`, `Export History`. Do not move left status/config cards.
+
+### 14.3 From Template A → Settings
+
+> Use `control_panel_updated_branding` as base. Keep all layout geometry. Replace right panel with four stacked cards: `Environment Profiles`, `Redaction Rules Editor`, `Retention Limits`, `Replay Guardrails`. Keep visual hierarchy low-noise.
+
+### 14.4 From Template B → Schema Drift
+
+> Use `endpoint_explorer_corrected` as base. Keep all layout geometry. Middle column becomes `Version Timeline`. Right column becomes `Drift Diff` with two groups: `Added Paths` and `Removed Paths`. Keep left filter/navigation unchanged.
+
+### 14.5 From Template B → Capture Inspector
+
+> Use `endpoint_explorer_corrected` as base. Keep all layout geometry. Middle column lists captures. Right column is split vertically into `Request` and `Response` panels with JSON viewers and copy actions.
+
+---
+
+## 15) Done-Definition für „gerettet statt perfekt“
+
+Ein Screen gilt als fertig, wenn:
+
+1. Er von Template A oder B ableitbar ist (ohne Redesign).
+2. Navigation/Shell unverändert bleibt.
+3. Datenobjekte klar lesbar sind (Status, Liste, Detail, Aktion).
+4. Loading/Empty/Error-State vorhanden ist.
+5. Maximal 1 Iteration nötig war, um ihn korrekt zu machen.
+
+Damit wird Stitch als **Layout-Kopierer** genutzt, nicht als Co-Designer.
