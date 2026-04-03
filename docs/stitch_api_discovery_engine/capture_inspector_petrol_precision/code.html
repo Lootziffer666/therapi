@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -39,89 +40,147 @@
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24 }
     </style>
+<style id="therapi-codeblock-design">
+  :root {
+    --therapi-code-bg: #0f172a;
+    --therapi-code-bg-elevated: #1e293b;
+    --therapi-code-border: rgba(148, 163, 184, 0.18);
+    --therapi-code-text: #5eead4;
+    --therapi-code-muted: #94a3b8;
+    --therapi-code-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+  }
+
+  .therapi-codeblock,
+  .code-block,
+  [data-codeblock],
+  [data-ui="codeblock"],
+  .api-code-snippet,
+  .capture-fragment {
+    position: relative;
+    overflow: auto;
+    border-radius: 0.75rem;
+    border: 1px solid var(--therapi-code-border);
+    background: var(--therapi-code-bg);
+    color: var(--therapi-code-text);
+    padding: 1.25rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    box-shadow: var(--therapi-code-shadow);
+  }
+
+  .therapi-codeblock pre,
+  .code-block pre,
+  [data-codeblock] pre,
+  [data-ui="codeblock"] pre,
+  .api-code-snippet pre,
+  .capture-fragment pre,
+  pre.therapi-codeblock {
+    margin: 0;
+    white-space: pre;
+    background: transparent;
+    color: inherit;
+    border: 0;
+    padding: 0;
+    overflow: visible;
+    font: inherit;
+  }
+
+  .therapi-codeblock code,
+  .code-block code,
+  [data-codeblock] code,
+  [data-ui="codeblock"] code,
+  .api-code-snippet code,
+  .capture-fragment code,
+  pre.therapi-codeblock code {
+    display: block;
+    min-width: max-content;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+  }
+
+  .therapi-codeblock__copy,
+  .code-block__copy,
+  [data-codeblock-copy] {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: var(--therapi-code-bg-elevated);
+    color: var(--therapi-code-muted);
+    padding: 0.375rem;
+    opacity: 0;
+    transition: opacity 160ms ease, color 160ms ease, border-color 160ms ease;
+  }
+
+  .therapi-codeblock:hover .therapi-codeblock__copy,
+  .code-block:hover .code-block__copy,
+  [data-codeblock]:hover [data-codeblock-copy],
+  [data-ui="codeblock"]:hover [data-codeblock-copy] {
+    opacity: 1;
+  }
+
+  .therapi-codeblock__copy:hover,
+  .code-block__copy:hover,
+  [data-codeblock-copy]:hover {
+    color: #ffffff;
+    border-color: rgba(148, 163, 184, 0.3);
+  }
+
+  pre[data-codeblock],
+  pre[data-ui="codeblock"] {
+    min-width: 0;
+  }
+
+  ::selection {
+    background: rgba(94, 234, 212, 0.28);
+  }
+</style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 flex overflow-hidden">
-<aside class="sidebar-width flex-shrink-0 h-screen border-r border-border-gray dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col">
-<div class="p-8 flex items-center gap-3">
-<div class="w-10 h-10 flex items-center justify-center">
-<svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 32">
-<path d="M12 0C12 0 4 8 4 16C4 20.4183 7.58172 24 12 24C16.4183 24 20 20.4183 20 16C20 8 12 0 12 0ZM12 20C9.79086 20 8 18.2091 8 16C8 13.7909 9.79086 12 12 12C14.2091 12 16 13.7909 16 16C16 18.2091 14.2091 20 12 20Z" opacity="0.8"></path>
-<path d="M12 2C12 2 5 9 5 16C5 19.866 8.13401 23 12 23C15.866 23 19 19.866 19 16C19 9 12 2 12 2ZM12 19C10.3431 19 9 17.6569 9 16C9 14.3431 10.3431 13 12 13C13.6569 13 15 14.3431 15 16C15 17.6569 13.6569 19 12 19Z"></path>
-</svg>
-</div>
-<span class="font-bold text-xl tracking-tight text-primary">THERAPI</span>
-</div>
-<nav class="flex-1 px-4 space-y-1">
-<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded transition-colors group" href="#">
-<span class="material-symbols-outlined text-xl">grid_view</span>
-<span class="font-medium text-sm">Control Panel</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">explore</span>
-<span class="font-medium text-sm">Endpoint Explorer</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">history_toggle_off</span>
-<span class="font-medium text-sm">Schema Drift</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">visibility</span>
-<span class="font-medium text-sm">Capture Inspector</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">description</span>
-<span class="font-medium text-sm">OpenAPI Export</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">folder_zip</span>
-<span class="font-medium text-sm">Collections Export</span>
-</a>
-</nav>
-<div class="mt-auto p-4 border-t border-border-gray dark:border-slate-800">
-<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded mb-4" href="#">
-<span class="material-symbols-outlined text-xl">settings</span>
-<span class="font-medium text-sm">Settings</span>
-</a>
-<div class="bg-slate-50 dark:bg-slate-800 p-3 rounded flex items-center gap-3">
-<div class="w-8 h-8 bg-primary text-white rounded flex items-center justify-center text-xs font-bold">TH</div>
-<div>
-<p class="text-xs font-bold text-slate-800 dark:text-slate-200">v2.4.0-stable</p>
-<p class="text-[10px] text-slate-500">System Ready</p>
-</div>
-</div>
-</div>
-</aside>
-<div class="flex-1 flex flex-col min-w-0 h-screen">
-<header class="topbar-height flex-shrink-0 border-b border-border-gray dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-end px-8 gap-4">
-<div class="flex items-center gap-2 bg-teal-50 dark:bg-teal-900/20 px-3 py-1 rounded-full">
-<span class="w-2 h-2 rounded-full bg-teal-500"></span>
-<span class="text-[11px] font-medium text-teal-700 dark:text-teal-400">Proxy Status: Online</span>
-</div>
-<div class="flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full">
-<span class="material-symbols-outlined text-[14px] text-blue-600">link</span>
-<span class="text-[11px] font-medium text-blue-700 dark:text-blue-400">Target: api.production.v1</span>
-</div>
-<div class="flex items-center gap-2 bg-indigo-50 dark:bg-indigo-900/20 px-3 py-1 rounded-full">
-<span class="material-symbols-outlined text-[14px] text-indigo-600">sensors</span>
-<span class="text-[11px] font-medium text-indigo-700 dark:text-indigo-400">Capture Rate: 100%</span>
-</div>
-</header>
-<main class="flex-1 overflow-y-auto bg-background-light dark:bg-slate-950 p-8 custom-scrollbar">
-<div class="mb-8">
-<div class="flex items-baseline gap-4 mb-1">
-<h1 class="text-3xl font-bold text-slate-900 dark:text-white">Capture Inspector</h1>
-<span class="text-slate-400 text-sm font-mono tracking-wider">SESSION ID: TH-992-PX</span>
-</div>
-<p class="text-slate-500 text-sm">Inspect individual request and response flows.</p>
-</div>
-<div class="mb-6 flex items-center gap-3 bg-teal-50/50 dark:bg-teal-900/10 border border-teal-100 dark:border-teal-900/30 px-4 py-2.5 rounded-lg">
+<body class="bg-background text-on-surface antialiased flex h-screen overflow-hidden">
+<aside class="flex flex-col h-full py-6 px-4 bg-slate-50 dark:bg-slate-900 w-[240px] border-r border-slate-200/50 z-10">
+<div class="mb-10 px-2 flex flex-col"><img alt="THERAPI Logo" class="h-auto w-full max-w-[160px] object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uiv51WmQ3o1O11ZgGGK-Tyk3nHJWq66oBillbqWSRKq3QjljKcL9Cvutlhj8U0uPYQoSRm2E6a7UUKXYaHWm23TFabLHjLW112M4K0lejEMhILriZKV4vSGCORXSXnShWDJMm8vkIHK6RRicGwuTvuN7s4yk8LGVxcsov7qeywImRxeZELYIvHxUue1oKDeeSRtupTRVgezWVu7PIGmT31l2nfA7sBazp0UyXUiOKeCgghBfm3YJVt0U4cxmgSDvlBb7zCPxU_K9w"/></div>
+<nav class="flex-1 space-y-1"><a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span><span class="text-sm">Control Panel</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">explore</span><span class="text-sm">Endpoint Explorer</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">compare_arrows</span><span class="text-sm">Schema Drift</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-[#006B5F] bg-slate-200/50 dark:bg-slate-800/50 font-semibold transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">radar</span><span class="text-sm">Capture Inspector</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">file_export</span><span class="text-sm">OpenAPI Export</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">folder_zip</span><span class="text-sm">Collections Export</span></a>
+<div class="pt-4 mt-4 border-t border-slate-200/50"><a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="text-sm">Settings</span></a></div></nav>
+<div class="mt-auto px-2"><div class="flex items-center gap-3 p-2 rounded-[10px] bg-slate-200/50 dark:bg-slate-800/50">
+<div class="w-8 h-8 rounded-[10px] text-white flex items-center justify-center font-bold text-xs bg-[#006B5F]">TH</div>
+<div class="flex flex-col"><span class="text-xs font-bold text-slate-900 dark:text-white">v2.4.0-stable</span><span class="text-[10px] text-slate-500">System Ready</span></div>
+</div></div></aside>
+<main class="flex-1 flex flex-col h-full bg-surface-container-lowest">
+<header class="flex items-center justify-end w-full px-8 gap-4 h-14 bg-white dark:bg-slate-950 z-20 border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary-container/10 text-tertiary text-xs font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>Proxy Status: Online</div>
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/30 text-on-secondary-container text-xs font-semibold"><span class="material-symbols-outlined text-[14px]">link</span>Target Base URL: https://api.production.v1</div>
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 text-primary text-xs font-semibold"><span class="material-symbols-outlined text-[14px]">sensors</span>Capture Rate: 100%</div>
+</div></header>
+<div class="flex-1 overflow-y-auto px-8 py-8 lg:px-10 lg:py-8"><div class="mb-8 flex flex-col gap-2 lg:flex-row lg:items-baseline lg:justify-between"><div><h1 class="text-4xl font-extrabold tracking-tight text-on-surface">Capture Inspector</h1><span class="text-sm font-semibold uppercase tracking-widest text-on-surface-variant/60">Inspect individual request and response flows</span></div></div><div class="space-y-5"><div class="mb-5 flex items-center gap-3 bg-teal-50/50 dark:bg-teal-900/10 border border-teal-100 dark:border-teal-900/30 px-4 py-2.5 rounded-lg">
 <span class="material-symbols-outlined text-primary text-[20px]">info</span>
 <p class="text-sm text-teal-800 dark:text-teal-300">
                     Sensitive values are redacted <span class="font-semibold text-primary">(4 fields, 2 headers)</span>
 </p>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-<div class="space-y-6">
+</div><section class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+<div class="bg-white dark:bg-slate-900 rounded-[10px] p-4 border border-border-gray dark:border-slate-800"><p class="text-[10px] uppercase tracking-widest text-slate-400 mb-1 font-bold">Method</p><p class="text-xl font-bold text-on-surface">GET /user/profile</p></div>
+<div class="bg-white dark:bg-slate-900 rounded-[10px] p-4 border border-border-gray dark:border-slate-800"><p class="text-[10px] uppercase tracking-widest text-slate-400 mb-1 font-bold">Status</p><p class="text-xl font-bold text-primary">200 OK</p></div>
+<div class="bg-white dark:bg-slate-900 rounded-[10px] p-4 border border-border-gray dark:border-slate-800"><p class="text-[10px] uppercase tracking-widest text-slate-400 mb-1 font-bold">Latency</p><p class="text-xl font-bold text-on-surface">184 ms</p></div>
+</section><div class="grid grid-cols-1 xl:grid-cols-12 gap-5">
+<div class="xl:col-span-4 bg-white dark:bg-slate-900 rounded-xl border border-border-gray dark:border-slate-800 overflow-hidden">
 <div class="bg-white dark:bg-slate-900 border border-border-gray dark:border-slate-800 rounded-lg overflow-hidden flex flex-col">
 <div class="px-5 py-4 border-b border-border-gray dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
 <h2 class="text-sm font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider">Request</h2>
@@ -164,7 +223,7 @@
 </div>
 </div>
 </div>
-<div class="space-y-6">
+<div class="xl:col-span-1 bg-white dark:bg-slate-900 rounded-xl border border-border-gray dark:border-slate-800 overflow-hidden">
 <div class="bg-white dark:bg-slate-900 border border-border-gray dark:border-slate-800 rounded-lg overflow-hidden flex flex-col">
 <div class="px-5 py-4 border-b border-border-gray dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
 <h2 class="text-sm font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider">Response</h2>
@@ -220,8 +279,13 @@
 </div>
 </div>
 </div>
-</div>
-<div class="mt-8 pt-8 border-t border-border-gray dark:border-slate-800 flex justify-between items-center text-[11px] text-slate-400 font-medium">
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-border-gray dark:border-slate-800 overflow-hidden">
+<div class="px-5 py-4 border-b border-border-gray dark:border-slate-800 flex items-center justify-between"><h2 class="text-lg font-bold">Trace Metadata</h2><span class="material-symbols-outlined text-slate-300 text-base">timeline</span></div>
+<div class="p-5 space-y-4 text-sm">
+<div><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Remote Address</p><p class="font-medium text-slate-700 dark:text-slate-200">192.168.1.124</p></div>
+<div><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Timestamp</p><p class="font-medium text-slate-700 dark:text-slate-200">2023-10-12 12:04:22.11</p></div>
+<div><p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Redactions Applied</p><p class="font-medium text-slate-700 dark:text-slate-200">4 fields, 2 headers</p></div>
+</div></div></div><div class="mt-8 pt-8 border-t border-border-gray dark:border-slate-800 flex justify-between items-center text-[11px] text-slate-400 font-medium">
 <div class="flex gap-6">
 <div class="flex items-center gap-1.5">
 <span class="material-symbols-outlined text-[14px]">public</span>
@@ -242,8 +306,4 @@
                         EXPORT JSON
                     </button>
 </div>
-</div>
-</main>
-</div>
-
-</body></html>
+</div></div></div></main></body></html>

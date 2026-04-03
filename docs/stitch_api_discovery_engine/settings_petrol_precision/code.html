@@ -77,84 +77,143 @@
         }
         body { font-family: 'Inter', sans-serif; }
     </style>
+<style id="therapi-codeblock-design">
+  :root {
+    --therapi-code-bg: #0f172a;
+    --therapi-code-bg-elevated: #1e293b;
+    --therapi-code-border: rgba(148, 163, 184, 0.18);
+    --therapi-code-text: #5eead4;
+    --therapi-code-muted: #94a3b8;
+    --therapi-code-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+  }
+
+  .therapi-codeblock,
+  .code-block,
+  [data-codeblock],
+  [data-ui="codeblock"],
+  .api-code-snippet,
+  .capture-fragment {
+    position: relative;
+    overflow: auto;
+    border-radius: 0.75rem;
+    border: 1px solid var(--therapi-code-border);
+    background: var(--therapi-code-bg);
+    color: var(--therapi-code-text);
+    padding: 1.25rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    box-shadow: var(--therapi-code-shadow);
+  }
+
+  .therapi-codeblock pre,
+  .code-block pre,
+  [data-codeblock] pre,
+  [data-ui="codeblock"] pre,
+  .api-code-snippet pre,
+  .capture-fragment pre,
+  pre.therapi-codeblock {
+    margin: 0;
+    white-space: pre;
+    background: transparent;
+    color: inherit;
+    border: 0;
+    padding: 0;
+    overflow: visible;
+    font: inherit;
+  }
+
+  .therapi-codeblock code,
+  .code-block code,
+  [data-codeblock] code,
+  [data-ui="codeblock"] code,
+  .api-code-snippet code,
+  .capture-fragment code,
+  pre.therapi-codeblock code {
+    display: block;
+    min-width: max-content;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+  }
+
+  .therapi-codeblock__copy,
+  .code-block__copy,
+  [data-codeblock-copy] {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: var(--therapi-code-bg-elevated);
+    color: var(--therapi-code-muted);
+    padding: 0.375rem;
+    opacity: 0;
+    transition: opacity 160ms ease, color 160ms ease, border-color 160ms ease;
+  }
+
+  .therapi-codeblock:hover .therapi-codeblock__copy,
+  .code-block:hover .code-block__copy,
+  [data-codeblock]:hover [data-codeblock-copy],
+  [data-ui="codeblock"]:hover [data-codeblock-copy] {
+    opacity: 1;
+  }
+
+  .therapi-codeblock__copy:hover,
+  .code-block__copy:hover,
+  [data-codeblock-copy]:hover {
+    color: #ffffff;
+    border-color: rgba(148, 163, 184, 0.3);
+  }
+
+  pre[data-codeblock],
+  pre[data-ui="codeblock"] {
+    min-width: 0;
+  }
+
+  ::selection {
+    background: rgba(94, 234, 212, 0.28);
+  }
+</style>
 </head>
-<body class="bg-surface text-on-surface">
-<!-- SideNavBar Shell -->
-<aside class="fixed left-0 top-0 bottom-0 flex flex-col w-[240px] h-screen border-r border-slate-200 bg-slate-50 z-20">
-<div class="px-6 py-8">
-<h1 class="text-lg font-semibold tracking-tighter text-[#005147]">Precision Architect</h1>
-<p class="font-['Inter'] text-[10px] tracking-widest uppercase font-semibold text-slate-500 mt-1">Editorial Tooling</p>
-</div>
-<nav class="flex-1 flex flex-col gap-1 px-2">
-<a class="flex items-center gap-3 px-4 py-2 text-slate-600 font-['Inter'] text-sm tracking-tight font-medium hover:bg-slate-200/30 transition-colors" href="#">
-<span class="material-symbols-outlined text-lg" data-icon="dashboard">dashboard</span>
-                Control Panel
-            </a>
-<a class="flex items-center gap-3 px-4 py-2 text-slate-600 font-['Inter'] text-sm tracking-tight font-medium hover:bg-slate-200/30 transition-colors" href="#">
-<span class="material-symbols-outlined text-lg" data-icon="explore">explore</span>
-                Endpoint Explorer
-            </a>
-<a class="flex items-center gap-3 px-4 py-2 text-slate-600 font-['Inter'] text-sm tracking-tight font-medium hover:bg-slate-200/30 transition-colors" href="#">
-<span class="material-symbols-outlined text-lg" data-icon="compare_arrows">compare_arrows</span>
-                Schema Drift
-            </a>
-<a class="flex items-center gap-3 px-4 py-2 text-slate-600 font-['Inter'] text-sm tracking-tight font-medium hover:bg-slate-200/30 transition-colors" href="#">
-<span class="material-symbols-outlined text-lg" data-icon="pcap">capture</span>
-                Capture Inspector
-            </a>
-<a class="flex items-center gap-3 px-4 py-2 text-slate-600 font-['Inter'] text-sm tracking-tight font-medium hover:bg-slate-200/30 transition-colors" href="#">
-<span class="material-symbols-outlined text-lg" data-icon="api">api</span>
-                OpenAPI Export
-            </a>
-<a class="flex items-center gap-3 px-4 py-2 text-slate-600 font-['Inter'] text-sm tracking-tight font-medium hover:bg-slate-200/30 transition-colors" href="#">
-<span class="material-symbols-outlined text-lg" data-icon="inventory_2">inventory_2</span>
-                Collections Export
-            </a>
-<a class="flex items-center gap-3 px-4 py-2 text-[#005147] border-l-4 border-[#005147] bg-slate-200/50 font-['Inter'] text-sm tracking-tight font-medium" href="#">
-<span class="material-symbols-outlined text-lg" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
-                Settings
-            </a>
-</nav>
-<div class="p-4 mt-auto">
-<div class="bg-surface-container-low rounded-xl p-3 flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-white text-xs font-bold">JD</div>
-<div class="flex-1 overflow-hidden">
-<p class="text-xs font-semibold truncate">Jonathan Doe</p>
-<p class="text-[10px] text-slate-500 truncate">Admin Access</p>
-</div>
-</div>
-</div>
-</aside>
-<!-- TopAppBar Shell -->
-<header class="fixed top-0 right-0 h-[56px] w-[calc(100%-240px)] ml-[240px] bg-white/80 backdrop-blur-xl flex items-center justify-between px-8 z-10 border-b border-slate-200/60 shadow-sm shadow-[#005147]/05">
+<body class="bg-background text-on-surface antialiased flex h-screen overflow-hidden">
+<aside class="flex flex-col h-full py-6 px-4 bg-slate-50 dark:bg-slate-900 w-[240px] border-r border-slate-200/50 z-10">
+<div class="mb-10 px-2 flex flex-col"><img alt="THERAPI Logo" class="h-auto w-full max-w-[160px] object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uiv51WmQ3o1O11ZgGGK-Tyk3nHJWq66oBillbqWSRKq3QjljKcL9Cvutlhj8U0uPYQoSRm2E6a7UUKXYaHWm23TFabLHjLW112M4K0lejEMhILriZKV4vSGCORXSXnShWDJMm8vkIHK6RRicGwuTvuN7s4yk8LGVxcsov7qeywImRxeZELYIvHxUue1oKDeeSRtupTRVgezWVu7PIGmT31l2nfA7sBazp0UyXUiOKeCgghBfm3YJVt0U4cxmgSDvlBb7zCPxU_K9w"/></div>
+<nav class="flex-1 space-y-1"><a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span><span class="text-sm">Control Panel</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">explore</span><span class="text-sm">Endpoint Explorer</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">compare_arrows</span><span class="text-sm">Schema Drift</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">radar</span><span class="text-sm">Capture Inspector</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">file_export</span><span class="text-sm">OpenAPI Export</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">folder_zip</span><span class="text-sm">Collections Export</span></a>
+<div class="pt-4 mt-4 border-t border-slate-200/50"><a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-[#006B5F] bg-slate-200/50 dark:bg-slate-800/50 font-semibold transition-colors duration-200" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="text-sm">Settings</span></a></div></nav>
+<div class="mt-auto px-2"><div class="flex items-center gap-3 p-2 rounded-[10px] bg-slate-200/50 dark:bg-slate-800/50">
+<div class="w-8 h-8 rounded-[10px] text-white flex items-center justify-center font-bold text-xs bg-[#006B5F]">TH</div>
+<div class="flex flex-col"><span class="text-xs font-bold text-slate-900 dark:text-white">v2.4.0-stable</span><span class="text-[10px] text-slate-500">System Ready</span></div>
+</div></div></aside>
+<main class="flex-1 flex flex-col h-full bg-surface-container-lowest">
+<header class="flex items-center justify-end w-full px-8 gap-4 h-14 bg-white dark:bg-slate-950 z-20 border-b border-slate-100 dark:border-slate-800">
 <div class="flex items-center gap-4">
-<span class="text-xs font-semibold uppercase tracking-widest text-[#005147]">therAPI Settings</span>
-</div>
-<div class="flex items-center gap-6">
-<div class="flex items-center gap-2">
-<div class="w-2 h-2 rounded-full bg-secondary"></div>
-<span class="font-['Inter'] text-xs font-semibold uppercase tracking-widest text-slate-500">Proxy: Active</span>
-</div>
-<div class="flex items-center gap-2">
-<span class="font-['Inter'] text-xs font-semibold uppercase tracking-widest text-slate-500">Capture: 100%</span>
-</div>
-<button class="text-slate-500 hover:text-[#006B5F] transition-colors cursor-pointer">
-<span class="material-symbols-outlined text-xl" data-icon="settings_input_component">settings_input_component</span>
-</button>
-</div>
-</header>
-<!-- Main Content -->
-<main class="ml-[240px] pt-[56px] min-h-screen bg-surface">
-<div class="max-w-7xl mx-auto p-12">
-<!-- Page Header -->
-<div class="mb-12">
-<h2 class="text-3xl font-semibold tracking-tight text-on-surface mb-2">System Configuration</h2>
-<p class="text-on-surface-variant max-w-2xl leading-relaxed">Refine how therAPI handles your data, environment traffic, and security protocols. These settings apply globally to your editorial workspace.</p>
-</div>
-<!-- Bento Grid Settings -->
-<div class="grid grid-cols-12 gap-8">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary-container/10 text-tertiary text-xs font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>Proxy Status: Online</div>
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/30 text-on-secondary-container text-xs font-semibold"><span class="material-symbols-outlined text-[14px]">link</span>Target Base URL: https://api.production.v1</div>
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 text-primary text-xs font-semibold"><span class="material-symbols-outlined text-[14px]">sensors</span>Capture Rate: 100%</div>
+</div></header>
+<div class="flex-1 overflow-y-auto px-8 py-8 lg:px-10 lg:py-8"><div class="mb-6 flex flex-col gap-2 lg:flex-row lg:items-baseline lg:justify-between"><div><h1 class="text-4xl font-extrabold tracking-tight text-on-surface">Settings</h1><span class="text-sm font-semibold uppercase tracking-widest text-on-surface-variant/60">Global environment, retention, and security controls</span></div></div><div class="space-y-6"><section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-surface-container-low p-5 rounded-[10px]"><p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 mb-2">Active Profile</p><p class="text-xl font-bold text-on-surface">Production-Alpha</p></div>
+<div class="bg-surface-container-low p-5 rounded-[10px]"><p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 mb-2">Retention Window</p><p class="text-xl font-bold text-on-surface">30 Days</p></div>
+<div class="bg-surface-container-low p-5 rounded-[10px]"><p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 mb-2">Redaction Coverage</p><p class="text-xl font-bold text-on-surface">14 Rules</p></div>
+</section><div class="grid grid-cols-12 gap-5 items-start">
 <!-- Environment Profiles -->
-<section class="col-span-12 lg:col-span-7 bg-surface-container-lowest rounded-[10px] p-8 shadow-[0px_4px_20px_rgba(0,81,71,0.05)] border-l-4 border-primary">
+<section class="col-span-12 xl:col-span-8 bg-surface-container-lowest rounded-[10px] p-8 shadow-[0px_4px_20px_rgba(0,81,71,0.05)] border-l-4 border-primary">
 <div class="flex justify-between items-start mb-8">
 <div>
 <h3 class="text-lg font-semibold text-on-surface mb-1">Environment Profiles</h3>
@@ -187,7 +246,7 @@
 </div>
 </section>
 <!-- Replay Guardrails -->
-<section class="col-span-12 lg:col-span-5 bg-surface-container-lowest rounded-[10px] p-8 shadow-[0px_4px_20px_rgba(0,81,71,0.05)]">
+<section class="col-span-12 xl:col-span-4 bg-surface-container-lowest rounded-[10px] p-8 shadow-[0px_4px_20px_rgba(0,81,71,0.05)]">
 <div class="flex justify-between items-start mb-8">
 <div>
 <h3 class="text-lg font-semibold text-on-surface mb-1">Replay Guardrails</h3>
@@ -224,7 +283,7 @@
 </div>
 </section>
 <!-- Redaction Rules Editor -->
-<section class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-[10px] p-8 shadow-[0px_4px_20px_rgba(0,81,71,0.05)]">
+<section class="col-span-12 xl:col-span-7 bg-surface-container-lowest rounded-[10px] p-8 shadow-[0px_4px_20px_rgba(0,81,71,0.05)]">
 <div class="flex justify-between items-start mb-8">
 <div class="flex items-center gap-3">
 <div class="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center">
@@ -288,7 +347,7 @@
 </div>
 </section>
 <!-- Retention Limits -->
-<section class="col-span-12 lg:col-span-4 bg-surface-container-lowest rounded-[10px] p-8 shadow-[0px_4px_20px_rgba(0,81,71,0.05)] flex flex-col">
+<section class="col-span-12 xl:col-span-5 bg-surface-container-lowest rounded-[10px] p-8 shadow-[0px_4px_20px_rgba(0,81,71,0.05)]">
 <div class="mb-6">
 <h3 class="text-lg font-semibold text-on-surface mb-1">Retention Limits</h3>
 <p class="text-sm text-on-surface-variant leading-tight">Automated capture cleanup and archive management.</p>
@@ -298,7 +357,7 @@
 <span class="material-symbols-outlined text-primary text-3xl" data-icon="history">history</span>
 <div>
 <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Live Captures</p>
-<p class="text-2xl font-extrabold text-on-surface tracking-tight">14 Days</p>
+<p class="text-xl font-extrabold text-on-surface tracking-tight">14 Days</p>
 </div>
 </div>
 <div class="p-5 bg-surface-container-low rounded-xl flex items-center gap-4">
@@ -320,7 +379,7 @@
 <!-- Advanced Editor (Asymmetric Placeholder) -->
 <div class="col-span-12 h-64 rounded-[10px] relative overflow-hidden group">
 <img class="absolute inset-0 w-full h-full object-cover grayscale opacity-20 transition-transform duration-700 group-hover:scale-105" data-alt="abstract high-tech circuit board with glowing neon pathways and dark brushed metal texture in architectural style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPJSEZhkOdwcbcUPuJc4332_Y1PiSy2YMFlriByWONvmvfVPTANusXcH6lBgtpjBYdVOOJJuIG4tkcwn6iKNX5MrriPUDU_hfvAoI-v2xij8GDkg--B18VkY-af2wA8LiY2ele4WYWucFwmz8h_cSwlLykR_hF25QtHb7amZ4UH5JMzlILpRa265KGNi7NkP3748AqoYeklXIxkpWYZQExbnU-TXt6VU8BiXP786w-xEqvl3elTLpyL0NWx9kD23rj9-ET0W_--Cs"/>
-<div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent flex items-center px-12">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent flex items-center px-8">
 <div class="max-w-md">
 <h4 class="text-white text-2xl font-bold mb-2">Architect Mode</h4>
 <p class="text-primary-fixed text-sm mb-6">Access low-level PCAP filters and direct binary inspection tools for advanced editorial debugging.</p>
@@ -328,14 +387,4 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-</main>
-<!-- BottomNavBar (Hidden on desktop as per Pivot Rule) -->
-<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white flex items-center justify-around z-30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
-<span class="material-symbols-outlined text-slate-400" data-icon="dashboard">dashboard</span>
-<span class="material-symbols-outlined text-slate-400" data-icon="explore">explore</span>
-<span class="material-symbols-outlined text-primary" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
-<span class="material-symbols-outlined text-slate-400" data-icon="api">api</span>
-</nav>
-</body></html>
+</div></div></div></main></body></html>

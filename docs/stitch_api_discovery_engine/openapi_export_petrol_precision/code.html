@@ -86,89 +86,159 @@
         body { font-family: 'Inter', sans-serif; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
+<style id="therapi-codeblock-design">
+  :root {
+    --therapi-code-bg: #0f172a;
+    --therapi-code-bg-elevated: #1e293b;
+    --therapi-code-border: rgba(148, 163, 184, 0.18);
+    --therapi-code-text: #5eead4;
+    --therapi-code-muted: #94a3b8;
+    --therapi-code-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+  }
+
+  .therapi-codeblock,
+  .code-block,
+  [data-codeblock],
+  [data-ui="codeblock"],
+  .api-code-snippet,
+  .capture-fragment {
+    position: relative;
+    overflow: auto;
+    border-radius: 0.75rem;
+    border: 1px solid var(--therapi-code-border);
+    background: var(--therapi-code-bg);
+    color: var(--therapi-code-text);
+    padding: 1.25rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    box-shadow: var(--therapi-code-shadow);
+  }
+
+  .therapi-codeblock pre,
+  .code-block pre,
+  [data-codeblock] pre,
+  [data-ui="codeblock"] pre,
+  .api-code-snippet pre,
+  .capture-fragment pre,
+  pre.therapi-codeblock {
+    margin: 0;
+    white-space: pre;
+    background: transparent;
+    color: inherit;
+    border: 0;
+    padding: 0;
+    overflow: visible;
+    font: inherit;
+  }
+
+  .therapi-codeblock code,
+  .code-block code,
+  [data-codeblock] code,
+  [data-ui="codeblock"] code,
+  .api-code-snippet code,
+  .capture-fragment code,
+  pre.therapi-codeblock code {
+    display: block;
+    min-width: max-content;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+  }
+
+  .therapi-codeblock__copy,
+  .code-block__copy,
+  [data-codeblock-copy] {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: var(--therapi-code-bg-elevated);
+    color: var(--therapi-code-muted);
+    padding: 0.375rem;
+    opacity: 0;
+    transition: opacity 160ms ease, color 160ms ease, border-color 160ms ease;
+  }
+
+  .therapi-codeblock:hover .therapi-codeblock__copy,
+  .code-block:hover .code-block__copy,
+  [data-codeblock]:hover [data-codeblock-copy],
+  [data-ui="codeblock"]:hover [data-codeblock-copy] {
+    opacity: 1;
+  }
+
+  .therapi-codeblock__copy:hover,
+  .code-block__copy:hover,
+  [data-codeblock-copy]:hover {
+    color: #ffffff;
+    border-color: rgba(148, 163, 184, 0.3);
+  }
+
+  pre[data-codeblock],
+  pre[data-ui="codeblock"] {
+    min-width: 0;
+  }
+
+  ::selection {
+    background: rgba(94, 234, 212, 0.28);
+  }
+</style>
 </head>
-<body class="bg-background text-on-surface">
-<!-- SideNavBar Shell -->
-<aside class="fixed left-0 top-0 bottom-0 flex flex-col w-[240px] h-screen border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 z-20">
-<div class="px-6 py-8">
-<h1 class="text-lg font-semibold tracking-tighter text-[#005147] dark:text-[#7CF7E5]">Precision Architect</h1>
-<p class="font-['Inter'] text-xs font-semibold uppercase tracking-widest text-slate-500 mt-1">Editorial Tooling</p>
-</div>
-<nav class="flex-1 px-2 space-y-1">
-<!-- Inactive -->
-<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 font-['Inter'] text-sm tracking-tight font-medium hover:bg-slate-200/30 dark:hover:bg-slate-800 transition-colors active:scale-[0.98]" href="#">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-                Control Panel
-            </a>
-<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 font-['Inter'] text-sm tracking-tight font-medium hover:bg-slate-200/30 dark:hover:bg-slate-800 transition-colors active:scale-[0.98]" href="#">
-<span class="material-symbols-outlined" data-icon="explore">explore</span>
-                Endpoint Explorer
-            </a>
-<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 font-['Inter'] text-sm tracking-tight font-medium hover:bg-slate-200/30 dark:hover:bg-slate-800 transition-colors active:scale-[0.98]" href="#">
-<span class="material-symbols-outlined" data-icon="compare_arrows">compare_arrows</span>
-                Schema Drift
-            </a>
-<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 font-['Inter'] text-sm tracking-tight font-medium hover:bg-slate-200/30 dark:hover:bg-slate-800 transition-colors active:scale-[0.98]" href="#">
-<span class="material-symbols-outlined" data-icon="pcap">capture</span>
-                Capture Inspector
-            </a>
-<!-- Active: OpenAPI Export -->
-<a class="flex items-center gap-3 px-4 py-2 text-[#005147] dark:text-[#7CF7E5] border-l-4 border-[#005147] bg-slate-200/50 dark:bg-[#005147]/20 font-['Inter'] text-sm tracking-tight font-medium active:scale-[0.98]" href="#">
-<span class="material-symbols-outlined" data-icon="api">api</span>
-                OpenAPI Export
-            </a>
-<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 font-['Inter'] text-sm tracking-tight font-medium hover:bg-slate-200/30 dark:hover:bg-slate-800 transition-colors active:scale-[0.98]" href="#">
-<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
-                Collections Export
-            </a>
-<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 font-['Inter'] text-sm tracking-tight font-medium hover:bg-slate-200/30 dark:hover:bg-slate-800 transition-colors active:scale-[0.98]" href="#">
-<span class="material-symbols-outlined" data-icon="settings">settings</span>
-                Settings
-            </a>
-</nav>
-<div class="p-6 border-t border-slate-200/60">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-white">
-<span class="material-symbols-outlined text-sm" data-icon="shield_person">shield_person</span>
-</div>
-<div>
-<p class="text-xs font-bold text-on-surface">Admin_Root</p>
-<p class="text-[10px] text-slate-500 uppercase tracking-tighter">System Access</p>
-</div>
-</div>
-</div>
-</aside>
-<!-- TopAppBar Shell -->
-<header class="fixed top-0 right-0 flex items-center justify-between px-6 z-10 h-[56px] w-[calc(100%-240px)] ml-[240px] bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/60 dark:border-slate-800/60 shadow-sm shadow-[#005147]/05">
+<body class="bg-background text-on-surface antialiased flex h-screen overflow-hidden">
+<aside class="flex flex-col h-full py-6 px-4 bg-slate-50 dark:bg-slate-900 w-[240px] border-r border-slate-200/50 z-10">
+<div class="mb-10 px-2 flex flex-col"><img alt="THERAPI Logo" class="h-auto w-full max-w-[160px] object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uiv51WmQ3o1O11ZgGGK-Tyk3nHJWq66oBillbqWSRKq3QjljKcL9Cvutlhj8U0uPYQoSRm2E6a7UUKXYaHWm23TFabLHjLW112M4K0lejEMhILriZKV4vSGCORXSXnShWDJMm8vkIHK6RRicGwuTvuN7s4yk8LGVxcsov7qeywImRxeZELYIvHxUue1oKDeeSRtupTRVgezWVu7PIGmT31l2nfA7sBazp0UyXUiOKeCgghBfm3YJVt0U4cxmgSDvlBb7zCPxU_K9w"/></div>
+<nav class="flex-1 space-y-1"><a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span><span class="text-sm">Control Panel</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">explore</span><span class="text-sm">Endpoint Explorer</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">compare_arrows</span><span class="text-sm">Schema Drift</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">radar</span><span class="text-sm">Capture Inspector</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-[#006B5F] bg-slate-200/50 dark:bg-slate-800/50 font-semibold transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">file_export</span><span class="text-sm">OpenAPI Export</span></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">folder_zip</span><span class="text-sm">Collections Export</span></a>
+<div class="pt-4 mt-4 border-t border-slate-200/50"><a class="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-200" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="text-sm">Settings</span></a></div></nav>
+<div class="mt-auto px-2"><div class="flex items-center gap-3 p-2 rounded-[10px] bg-slate-200/50 dark:bg-slate-800/50">
+<div class="w-8 h-8 rounded-[10px] text-white flex items-center justify-center font-bold text-xs bg-[#006B5F]">TH</div>
+<div class="flex flex-col"><span class="text-xs font-bold text-slate-900 dark:text-white">v2.4.0-stable</span><span class="text-[10px] text-slate-500">System Ready</span></div>
+</div></div></aside>
+<main class="flex-1 flex flex-col h-full bg-surface-container-lowest">
+<header class="flex items-center justify-end w-full px-8 gap-4 h-14 bg-white dark:bg-slate-950 z-20 border-b border-slate-100 dark:border-slate-800">
 <div class="flex items-center gap-4">
-<span class="text-xs font-semibold uppercase tracking-widest text-[#005147]">therAPI Editor</span>
-<span class="w-[1px] h-4 bg-slate-200"></span>
-<span class="text-[10px] font-bold text-secondary flex items-center gap-1.5 px-2 py-0.5 bg-secondary-container rounded-full">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                Proxy: Active
-            </span>
-</div>
-<div class="flex items-center gap-6">
-<div class="flex items-center gap-2">
-<span class="text-[10px] font-semibold text-slate-500 uppercase tracking-widest">Capture: 100%</span>
-<div class="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">
-<div class="w-full h-full bg-primary"></div>
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary-container/10 text-tertiary text-xs font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>Proxy Status: Online</div>
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/30 text-on-secondary-container text-xs font-semibold"><span class="material-symbols-outlined text-[14px]">link</span>Target Base URL: https://api.production.v1</div>
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 text-primary text-xs font-semibold"><span class="material-symbols-outlined text-[14px]">sensors</span>Capture Rate: 100%</div>
+</div></header>
+<div class="flex-1 overflow-y-auto px-8 py-8 lg:px-10 lg:py-8"><div class="mb-8 flex flex-col gap-2 lg:flex-row lg:items-baseline lg:justify-between"><div><h1 class="text-4xl font-extrabold tracking-tight text-on-surface">OpenAPI Export</h1><span class="text-sm font-semibold uppercase tracking-widest text-on-surface-variant/60">Review, validate, and package discovered schemas</span></div></div><div class="space-y-6"><section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-white p-6 rounded-[10px] border-l-4 border-primary shadow-sm flex flex-col justify-between min-h-[112px]">
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Total Endpoints Exported</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold text-[#005147]">142</span>
+<span class="text-xs text-secondary-container bg-primary-container px-1.5 py-0.5 rounded">+12</span>
 </div>
 </div>
-<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:text-[#006B5F]" data-icon="settings_input_component">settings_input_component</span>
+<div class="bg-white p-6 rounded-[10px] border-l-4 border-secondary-container shadow-sm flex flex-col justify-between min-h-[112px]">
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Schema Accuracy Rate</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold text-secondary">99.4%</span>
+<span class="text-xs text-slate-400">Optimized</span>
 </div>
-</header>
-<!-- Main Content -->
-<main class="ml-[240px] pt-[56px] min-h-screen bg-background">
-<div class="p-8 max-w-7xl mx-auto space-y-8">
-<!-- Page Header -->
-<header class="flex flex-col gap-1">
-<h2 class="text-3xl font-semibold tracking-tight text-on-surface -ml-0.5">OpenAPI Export</h2>
-<p class="text-sm text-on-surface-variant">Review, format, and package your discovered endpoint schemas for documentation sync.</p>
-</header>
-<!-- Main Editor Section -->
-<section class="grid grid-cols-1 gap-6">
-<div class="bg-surface-container-lowest rounded-[10px] shadow-[0px_4px_20px_rgba(0,81,71,0.05)] overflow-hidden flex flex-col h-[600px]">
+</div>
+<div class="bg-white p-6 rounded-[10px] border-l-4 border-tertiary-container shadow-sm flex flex-col justify-between min-h-[112px]">
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Active Data Collections</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold text-tertiary">24</span>
+<span class="text-xs text-slate-400">Ready</span>
+</div>
+</div>
+</section><div class="grid grid-cols-12 gap-6 items-start"><div class="col-span-12 xl:col-span-7 bg-surface-container-lowest rounded-[10px] shadow-[0px_4px_20px_rgba(0,81,71,0.05)] overflow-hidden flex flex-col ">
 <!-- Toolbar -->
 <div class="bg-surface-container-low border-b border-outline-variant/20 px-4 py-3 flex items-center justify-between">
 <div class="flex items-center gap-1">
@@ -226,7 +296,14 @@
 </div>
 </div>
 </div>
-</div>
+</div><div class="col-span-12 xl:col-span-5 bg-surface-container-low rounded-[10px] p-6 space-y-4 shadow-[0px_4px_20px_rgba(0,81,71,0.05)]">
+<!-- Page Header -->
+<header class="flex flex-col gap-1">
+<h2 class="text-3xl font-semibold tracking-tight text-on-surface -ml-0.5">OpenAPI Export</h2>
+<p class="text-sm text-on-surface-variant">Review, format, and package your discovered endpoint schemas for documentation sync.</p>
+</header>
+<!-- Main Editor Section -->
+<section class="grid grid-cols-1 gap-6">
 <!-- Export History Table -->
 <div class="space-y-4">
 <div class="flex items-center justify-between">
@@ -307,29 +384,4 @@
 </div>
 </section>
 <!-- Bottom Stats Grid -->
-<section class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-8">
-<div class="bg-white p-6 rounded-[10px] border-l-4 border-primary shadow-sm flex flex-col justify-between h-32">
-<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Total Endpoints Exported</span>
-<div class="flex items-baseline gap-2">
-<span class="text-3xl font-bold text-[#005147]">142</span>
-<span class="text-xs text-secondary-container bg-primary-container px-1.5 py-0.5 rounded">+12</span>
-</div>
-</div>
-<div class="bg-white p-6 rounded-[10px] border-l-4 border-secondary-container shadow-sm flex flex-col justify-between h-32">
-<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Schema Accuracy Rate</span>
-<div class="flex items-baseline gap-2">
-<span class="text-3xl font-bold text-secondary">99.4%</span>
-<span class="text-xs text-slate-400">Optimized</span>
-</div>
-</div>
-<div class="bg-white p-6 rounded-[10px] border-l-4 border-tertiary-container shadow-sm flex flex-col justify-between h-32">
-<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Active Data Collections</span>
-<div class="flex items-baseline gap-2">
-<span class="text-3xl font-bold text-tertiary">24</span>
-<span class="text-xs text-slate-400">Ready</span>
-</div>
-</div>
-</section>
-</div>
-</main>
-</body></html>
+</div></div></div></div></main></body></html>
