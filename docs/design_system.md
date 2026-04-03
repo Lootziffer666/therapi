@@ -134,7 +134,6 @@
 </nav>
 <div class="mt-auto px-8 py-4">
 <div class="flex items-center gap-3">
-<img alt="therAPI Logo" class="w-8 h-8 rounded-full bg-slate-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXpYxUtJ6ICm9nXayN20Da0Lm-fsfk-sKUHJDw1qUTzENOf_5MdCe7cwThQJhw6pJCFQ5SyytYycekf8YzEe0mdHDCgbrmqaYXS_tWaIPWmBq1A6etUIo8uN4FAu9MjaJyxa6aIqXbYArdKKPMlyRkx9YNmiotypo0N4yQtId1dXVU8u_cLNizniMZf0N1UF44pglalAHEWZPOUsYMfHDaZ-fE71ukcIajJUYRP3tsgv1cCxgoIsRw7voL66gt_q1aZNti566Wnk0"/>
 <div class="flex flex-col">
 <span class="text-xs font-bold text-on-surface">v2.4.1-stable</span>
 <span class="text-[10px] text-slate-400">Node Cluster: US-East</span>
@@ -1507,7 +1506,7 @@
 <div class="relative">
 <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white"></div>
 <div class="flex items-center justify-between mb-1">
-<h4 class="text-sm font-bold text-on-surface">v1.4.2 — Latest stable</h4>
+<h4 class="text-sm font-bold text-on-surface">v1.4.2 Â— Latest stable</h4>
 <span class="text-[10px] text-outline font-bold">OCT 24, 2023</span>
 </div>
 <p class="text-xs text-on-surface-variant">Added <code class="bg-surface-container px-1 rounded">department_code</code> to root response schema.</p>
@@ -1523,7 +1522,7 @@
 <div class="relative">
 <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-outline-variant border-4 border-white"></div>
 <div class="flex items-center justify-between mb-1">
-<h4 class="text-sm font-bold text-on-surface-variant">v1.3.9 — Initial Release</h4>
+<h4 class="text-sm font-bold text-on-surface-variant">v1.3.9 Â— Initial Release</h4>
 <span class="text-[10px] text-outline font-bold">AUG 01, 2023</span>
 </div>
 <p class="text-xs text-on-surface-variant">Baseline endpoint architecture established.</p>
@@ -1944,7 +1943,7 @@
 <footer class="mt-20 pt-10 border-t border-slate-200 flex flex-col md:flex-row gap-8 items-center justify-between">
 <div class="flex items-center gap-6">
 <img alt="therAPI logo" class="h-6 opacity-20" data-alt="minimal monochrome logo of an abstract digital link symbol in light grey" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2pXCKN8SS7Xoe0a5miFCtALg3lL_WUDzy8tOMmfpsWlTSF34ySZXBJ2YnuPcukNBXOJlU1zK9HywbecpwyfQaxUADM-kIw77fv2w7vdomxJ-IXPb4xDSFj2uB6bkaDuXwklD1Zi2acsXqlTK39cyQQgMNUSHHA65-8-x_OaiJlku1L0NLvel8Qo7JZCXq9WXZ0Dlb8L_i9b8-t9ABTngIMhmm5FtfKyf_u-yA8uskODZKHfU7zYw60Q78YpKGiqdX1nqzaHlRaCA"/>
-<p class="text-xs text-slate-400 font-medium tracking-wide">© 2024 therAPI Orchestration System. High-fidelity schema monitoring.</p>
+<p class="text-xs text-slate-400 font-medium tracking-wide">Â© 2024 therAPI Orchestration System. High-fidelity schema monitoring.</p>
 </div>
 <div class="flex gap-8">
 <a class="text-xs font-bold text-primary hover:underline decoration-2 underline-offset-4" href="#">API Documentation</a>
