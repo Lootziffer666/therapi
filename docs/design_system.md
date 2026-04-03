@@ -12,23 +12,35 @@ Dieses Dokument ist absichtlich in **kleinen, robusten Prompt-Bausteinen** aufge
 
 ---
 
-## 2) Design-Tokens (fix)
+## 2) Design-Tokens (fix, guideline-konform)
 
-- **Theme:** dark-neutral
+- **Theme-Modus:** technical-neutral (**light default**), dark optional für technische Deep-Work-Ansichten
 - **Border radius:** 10px
-- **Spacing scale:** 4, 8, 12, 16, 24, 32
+- **Grid/Spacing:** 8pt-Grid mit 4/8/16/24/32
 - **Font:** Inter (Semibold headings, Regular body)
-- **Farben:**
-  - bg `#0B1020`
-  - panel `#121A2A`
-  - panel-alt `#172238`
-  - text `#E5ECF6`
-  - text-muted `#9FB0C6`
-  - accent `#56B6F7`
-  - success `#46C37B`
-  - warning `#F5A623`
-  - danger `#E05D5D`
-  - border `#253551`
+- **Core Palette (light default, guideline-abgeleitet):**
+  - primary `#1F6FEB`
+  - secondary `#5B7C99`
+  - accent `#14B8A6`
+  - background `#F8FAFC`
+  - surface `#FFFFFF`
+  - elevated-surface `#F1F5F9`
+  - border `#CBD5E1`
+  - text-primary `#0F172A`
+  - text-secondary `#475569`
+- **Dark-Variante (optional):**
+  - background `#0F172A`
+  - surface `#111827`
+  - elevated-surface `#1F2937`
+  - border `#334155`
+  - text-primary `#E5E7EB`
+  - text-secondary `#94A3B8`
+- **Semantic Colors (aus Guideline):**
+  - success `#22C55E`
+  - warning `#F59E0B`
+  - danger `#EF4444`
+  - info `#38BDF8`
+- **Kontrastregeln:** mindestens WCAG AA; Status nicht nur über Farbe kommunizieren
 
 ---
 
@@ -52,7 +64,7 @@ Dieses Dokument ist absichtlich in **kleinen, robusten Prompt-Bausteinen** aufge
 
 **Prompt A1 — Grundlayout**
 
-> Erzeuge eine Desktop-App-Shell mit linker Sidebar (240px), Topbar (56px), Content-Bereich rechts. Nutze dunkles Theme mit den angegebenen Tokens. Sidebar enthält Navigation: Control Panel, Endpoint Explorer, Schema Drift, Capture Inspector, OpenAPI Export, Collections Export, Settings.
+> Erzeuge eine Desktop-App-Shell mit linker Sidebar (240px), Topbar (56px), Content-Bereich rechts. Nutze helles, neutrales Theme als Default mit den angegebenen Tokens. Sidebar enthält Navigation: Control Panel, Endpoint Explorer, Schema Drift, Capture Inspector, OpenAPI Export, Collections Export, Settings.
 
 **Prompt A2 — Topbar Status**
 
